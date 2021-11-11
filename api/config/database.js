@@ -19,7 +19,7 @@ INSERT INTO user (
     user_email,
     user_password,
     user_full_name
-) SELECT 'Vinicius', 'vinicius@catbook.com.br', '12345678', 'Vinicius' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'vinicius')
+) SELECT 'Teste', 'teste@catbook.com.br', '12345678', 'Teste' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'teste')
 `;
 
 const PHOTO_SCHEMA = 
