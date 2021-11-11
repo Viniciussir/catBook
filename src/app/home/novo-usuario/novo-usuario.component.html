@@ -3,12 +3,41 @@
 <form class="form mt-4" [formGroup]= "novoUsuarioForm" (submit)="cadastrar()">
     <div class="form-group mt-3">
         <input placeholder="e-mail" class="form-control" formControlName= "email" />
+        <app-mensagem
+            *ngIf="
+            novoUsuarioForm.get('email')?.errors?.required && 
+            novoUsuarioForm.get('email')?.touched"
+            mensagem="E-mail obrigatório">
+        </app-mensagem>
+        <app-mensagem
+            *ngIf="
+            novoUsuarioForm.get('email')?.errors?.email && 
+            novoUsuarioForm.get('email')?.touched"
+            mensagem="E-mail no formato incorreto">
+        </app-mensagem>
     </div>
     <div class="form-group mt-3">
         <input placeholder="Nome Completo" class="form-control" formControlName= "fullName"/>
+        <app-mensagem
+            *ngIf="
+            novoUsuarioForm.get('fullName')?.errors &&
+            novoUsuarioForm.get('fullName')?.touched"
+            mensagem="Nome incorreto">
+        </app-mensagem>
     </div>
     <div class="form-group mt-3">
         <input placeholder="Usuário" class="form-control" formControlName= "userName"/>
+        <app-mensagem
+            *ngIf="
+            novoUsuarioForm.get('userName')?.errors?.minusculo &&
+            novoUsuarioForm.get('userName')?.touched"
+            mensagem="Usuário deve ser em letra minúscula">
+        </app-mensagem>
+        <app-mensagem
+           *ngIf="
+           novoUsuarioForm.get('userName')?.errors?.usuarioExistente"
+           mensagem="Usuario já existe">
+        </app-mensagem>
     </div>
     <div class="form-group mt-3">
         <input type="password" placeholder="Senha" class="form-control" formControlName= "password" />
